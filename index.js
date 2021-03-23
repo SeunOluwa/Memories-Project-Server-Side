@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
   res.send('hello to memories API');
 });
 
-// const CONNECTION_URL = 'mongodb://localhost/memories-app';
 const PORT = process.env.PORT || 5000;
 
 // Connected to mongodb
