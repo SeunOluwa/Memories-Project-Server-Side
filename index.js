@@ -1,4 +1,5 @@
 import express from 'express';
+// import path from 'path';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -6,6 +7,7 @@ import dotenv from 'dotenv';
 
 // Routes
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
 
 const app = express();
 dotenv.config();
@@ -16,10 +18,20 @@ app.use(cors());
 
 // Middlewares
 app.use('/posts', postRoutes);
+app.use('/user', userRoutes);
 
-app.get('/', (req, res) => {
-  res.send('hello to memories API');
-});
+// if(process.env.NODE_ENV === "production") {
+//   const __dirname = path.dirname('client');
+//   app.use(express.static(path.join(__dirname, '/build')));
+
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
+//   });
+// } else {
+//   app.get('/', (req, res) => {
+//     res.send('Api running');
+//   });
+// }
 
 const PORT = process.env.PORT || 5000;
 
